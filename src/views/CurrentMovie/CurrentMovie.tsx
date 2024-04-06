@@ -36,15 +36,21 @@ const CurrentMovie = () => {
                     <div className='flex  justify-start gap-10'>
                         <div>
                             <img className='w-34' src={movie?.poster.url} alt="" />
-                            <div className='flex gap-2 mt-2'>
-                                {movie?.watchability.items.map((item) => {
-                                    return(
-                                        <a key={item.name} href={item.url} >
-                                            <img className='max-w-12 rounded-lg' src={item.logo.url} alt="" />
-                                        </a>
-                                    )
-                                })}
-                            </div>
+                            {
+                                movie?.watchability 
+                                ? 
+                                <div className='flex gap-2 mt-2'>
+                                    {movie?.watchability.items.map((item) => {
+                                        return(
+                                            <a key={item.name} href={item.url} >
+                                                <img className='max-w-12 rounded-lg' src={item.logo.url} alt="" />
+                                            </a>
+                                        )
+                                    })}
+                                </div>  
+                                :
+                                null
+                            }
                         </div>
                         <div>
                             <div className='text-3xl font-bold mb-6'>{movie?.name}</div>
