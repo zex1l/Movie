@@ -11,7 +11,7 @@ export interface IMovie {
     countries: ICountries[]
     person: IPerson
     watchability: IWatchability
-
+    rating: IRatingCinemas
 }
 
 export interface IBudget {
@@ -46,4 +46,12 @@ export interface IService {
 
 export interface ILogoCinema {
     url: string
+}
+
+export interface IRatingCinemas {
+    kp: number
+    imdb: number
+    filmCritics: number
+    russianFilmCritics: number
+    await: number
 }

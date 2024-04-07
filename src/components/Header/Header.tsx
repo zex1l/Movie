@@ -1,6 +1,18 @@
+import {useState} from 'react'
 import { ImSearch } from "react-icons/im";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 const Header = () => {
+    const [nameMovie, setNameMovie] = useState<string>("")
+
+    const navigate = useNavigate()
+
+    const navigateToCurrentCinema = () => {
+        navigate(`/search/${nameMovie}`)
+        setNameMovie('')
+    }
+
+    console.log(nameMovie)
+
     return (
         <header className='p-3 flex justify-between'>
             <Link to='/' className=''>Кино</Link>
@@ -13,8 +25,13 @@ const Header = () => {
                     type="text" 
                     className='text-black rounded-lg px-4 py-1' 
                     placeholder="Поиск"
+                    onChange={e => setNameMovie(e.target.value)}
+                    value={nameMovie}
                 />
-                <ImSearch className='cursor-pointer'/>
+                <ImSearch 
+                    className='cursor-pointer'
+                    onClick={navigateToCurrentCinema}
+                />
             </div>
         </header>
     );
